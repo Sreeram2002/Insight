@@ -1,5 +1,6 @@
 # This code takes a frame, runs YOLOV5 Object Detection Model and provides voice feedback
 
+################################### IMPORT LIBRARIES #######################################################
 
 import pyrealsense2 as rs
 import numpy as np
@@ -12,6 +13,7 @@ import os
 from gtts import gTTS
 import playsound
 
+################################## REALSENSE ###################################################################
 pipe = rs.pipeline()
 cfg  = rs.config()
 
@@ -42,7 +44,7 @@ depth_cm = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha = 0.5), cv2.
 gray_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2GRAY)
 
 
-
+########################################### YOLO OBJECT DETECTION #######################################################################
 
 # Load the YOLOv5 model
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s', force_reload=True, trust_repo=True)
